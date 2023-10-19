@@ -1,5 +1,4 @@
 def encrypt(password):
-    # 将每位数的个位和十位交换位置
     password = str(password)
     if len(password) == 1:
         password = '0' + password
@@ -48,4 +47,5 @@ def menu():
             break
         else:
             print('输入的选项序号不合法，请重新输入。')
+
 menu()
