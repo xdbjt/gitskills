@@ -1,19 +1,19 @@
-def encrypt(password):
+def encrypt(password):# 将每位数的个位和十位交换位置
     password = str(password)
     if len(password) == 1:
         password = '0' + password
-    password = password[1] + password[0]
-    password = [(int(x) + 5) % 10 for x in password]
-    password = [x * 2 for x in password]
+    password = password[1] + password[0]# 将每位数都加上5，并对10求余
+    password = [(int(x) + 5) % 10 for x in password] # 将每位数乘以2
+    password = [x * 2 for x in password]# 将所有数字反转，得到一串新数
     password = int(''.join(map(str, password[::-1])))
 
     return password
 
-def decrypt(password):
-    password = str(password)[::-1]
-    password = [x // 2 for x in map(int, password)]
-    password = [(x - 5) % 10 for x in password]
-    password = password[1], password[0]
+def decrypt(password):# 将所有数字反转
+    password = str(password)[::-1]# 将每位数除以2
+    password = [x // 2 for x in map(int, password)] # 将每位数减去5，并对10求余
+    password = [(x - 5) % 10 for x in password]# 将每位数的个位和十位交换位置
+    password = password[1], password[0]# 输出解密后的数字密码
     password = int(''.join(map(str, password)))
 
     return password
@@ -48,4 +48,5 @@ def menu():
         else:
             print('输入的选项序号不合法，请重新输入。')
 
+# 测试
 menu()
