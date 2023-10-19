@@ -1,0 +1,51 @@
+def encrypt(password):
+    password = str(password)
+    if len(password) == 1:
+        password = '0' + password
+    password = password[1] + password[0]
+    password = [(int(x) + 5) % 10 for x in password]
+    password = [x * 2 for x in password]
+    password = int(''.join(map(str, password[::-1])))
+
+    return password
+
+def decrypt(password):
+    password = str(password)[::-1]
+    password = [x // 2 for x in map(int, password)]
+    password = [(x - 5) % 10 for x in password]
+    password = password[1], password[0]
+    password = int(''.join(map(str, password)))
+
+    return password
+
+def menu():
+    while True:
+        print('请选择操作：')
+        print('1. 加密')
+        print('2. 解密')
+        print('3. 退出')
+        choice = input('请输入选项序号：')
+        if choice == '1':
+            password = input('请输入数字密码：')
+            try:
+                password = int(password)
+                if password <= 0:
+                    raise ValueError
+                encrypted_password = encrypt(password)
+                print('加密后的密码为：', encrypted_password)
+            except ValueError:
+                print('输入的数字密码不合法，请重新输入。')
+        elif choice == '2':
+            password = input('请输入加密后的数字密码：')
+            try:
+                password = int(password)
+                decrypted_password = decrypt(password)
+                print('解密后的密码为：', decrypted_password)
+            except ValueError:
+                print('输入的加密后的数字密码不合法，请重新输入。')
+        elif choice == '3':
+            break
+        else:
+            print('输入的选项序号不合法，请重新输入。')
+
+menu()
