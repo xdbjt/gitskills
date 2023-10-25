@@ -48,5 +48,4 @@ def menu():
         else:
             print('输入的选项序号不合法，请重新输入。')
 
-# 测试
 menu()
