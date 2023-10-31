@@ -1,4 +1,4 @@
-def encrypt(password):# 将每位数的个位和十位交换位置
+无def encrypt(password):# 将每位数的个位和十位交换位置
     password = str(password)
     if len(password) == 1:
         password = '0' + password
